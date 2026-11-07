@@ -263,3 +263,11 @@ Deno.test({
     assertEquals(parsedIni, expected);
   },
 });
+
+Deno.test({
+  name: "parse() keeps an empty value as an empty string",
+  fn() {
+    assertEquals(parse("k="), { k: "" });
+    assertEquals(parse("[s]\nk="), { s: { k: "" } });
+  },
+});
